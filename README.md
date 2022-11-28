@@ -1,4 +1,4 @@
-# Transition state theory-inspired neural network for estimation of the viscosity of deep eutectic solvents
+# Force field-inspired molecular representation learning for property prediction
 This is the official implentation of FFiNet: "Force field-inspired molecular representation learning for property prediction". In this work,we construct a force field-inspired neural network (FFiNet) that can utilize all the interactions in molecules. Force field, which is a simple approximation to calculate the potential energy in molecules, divides all the interactions in molecules into four parts, i.e., bonded interactions, angle interactions, torsion interactions, and nonbonded interactions. Intuitively, these interactions can denote the importance of source atoms toward target atoms, which can be associated with graph attention mechanisms. Following this idea, we construct a novel attention-based message passing scheme that calculates the importance scores of source atoms within three hops according to their interactions with target atoms.
 
 ![Network architecture of the FFiNet model](network_structure.png)
