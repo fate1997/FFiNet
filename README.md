@@ -4,7 +4,7 @@ This is the official implentation of FFiNet: "Force field-inspired molecular rep
 ![Network architecture of the FFiNet model](Network.png)
 
 ## Datasets
-All the raw datasets except the QM9 and PDBBind dataset (which is very large) are lied in 'FFiNet/data/raw_files/'. The QM9 dataset can be download [here](https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/molnet_publish/qm9.zip). The PDBBind dataset can be download [here](http://pdbbind-cn.org/) and they should be movedinto 'FFiNet/data/raw_files/', the file structure should be:
+All the raw datasets except the QM9 and PDBBind dataset (which is very large) are lied in 'FFiNet/data/raw_files/'. The QM9 dataset can be download [here](https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/molnet_publish/qm9.zip). The PDBBind dataset can be download [here](http://pdbbind-cn.org/) and they should be moved into 'FFiNet/data/raw_files/', the file structure for PDBBind should be:
 ```
 raw_files
   | 
