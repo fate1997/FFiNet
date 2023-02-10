@@ -35,6 +35,22 @@ raw_files
 ## Cite
 If you use FFiNet in your research, please cite:
 ```
-Ren, GP., Yin, YJ., Wu, KJ. et al. Force field-inspired molecular representation learning for property prediction. J Cheminform 15, 17 (2023). https://doi.org/10.1186/s13321-023-00691-2
+﻿@Article{Ren2023,
+author={Ren, Gao-Peng
+and Yin, Yi-Jian
+and Wu, Ke-Jun
+and He, Yuchen},
+title={Force field-inspired molecular representation learning for property prediction},
+journal={Journal of Cheminformatics},
+year={2023},
+month={Feb},
+day={06},
+volume={15},
+number={1},
+pages={17},
+issn={1758-2946},
+doi={10.1186/s13321-023-00691-2},
+url={https://doi.org/10.1186/s13321-023-00691-2}
+}
 ```
 
