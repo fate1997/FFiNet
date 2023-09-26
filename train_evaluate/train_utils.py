@@ -7,8 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import metrics
 import pandas as pd
-from rdkit.Chem.Scaffolds.MurckoScaffold import MurckoScaffoldSmiles
-from rdkit import Chem
+import os
 
 
 class TargetSelectTransform(object):
@@ -96,7 +95,9 @@ class EarlyStopping:
 
     def save_checkpoint(self, val_loss, test_loader, model):
         # Saves model when validation score doesn't improve in patience
-        torch.save(model.state_dict(), self.path + self.model_type + '.pt')
+        if not os.path.exists(self.path):
+            os.makedirs(self.path)
+        torch.save(model.state_dict(), os.path.join(self.path, self.model_type + '.pt'))
         save_results(model, test_loader, self.trainargs)
         self.val_loss_min = val_loss
 
@@ -165,7 +166,7 @@ def evaluate_score(model, data_loader, train_args):
     return metric_dict
 
 class TrainArgs:
-    def __init__(self, num_epochs = 10000, lr = 0.001, batch_size = 128, model_save_path = '.\\train_evaluate\\saved_models\\', 
+    def __init__(self, num_epochs = 10000, lr = 0.001, batch_size = 128, model_save_path = './train_evaluate/saved_models/', 
                 model_type = None, patience = 100, task = 'regression', num_tasks = 1, normalize = False, 
                 interval = 10, device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu"), 
                 metrics = 'RMSE', task_name = ['ESOL'], tolerance=0, split='random', results_dir='./train_evaluate/results/', 
@@ -228,4 +229,6 @@ def save_results(model, data_loader, train_args):
     y_true, y_pred, smiles = batch_flatten(model, data_loader,
                                     train_args=train_args)
     results = pd.DataFrame(np.concatenate([y_true, y_pred], axis=-1), index=smiles)
-    results.to_csv(train_args.results_dir + train_args.model_type + '.csv')
+    if not os.path.exists(train_args.results_dir):
+        os.makedirs(train_args.results_dir)
+    results.to_csv(os.path.join(train_args.results_dir, train_args.model_type + '.csv'))

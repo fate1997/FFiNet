@@ -103,6 +103,8 @@ class DataGenerating:
             features_dict[i]['z'] = z
 
         # save files as npy
+        if not os.path.exists(os.path.join(self.folder, 'feature_files')):
+            os.makedirs(os.path.join(self.folder, 'feature_files'))
         feature_save_path = os.path.join(self.folder, 'feature_files', self.feature_dict_name)
         np.save(feature_save_path, features_dict)
 
